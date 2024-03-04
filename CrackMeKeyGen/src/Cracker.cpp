@@ -1,14 +1,9 @@
 #include <stdio.h>
 #include "Cracker.hpp"
 
-ErrorCode Crack(sf::RectangleShape& button, const char* filePath)
+ErrorCode Crack(const char* filePath)
 {
-    printf("CRACK WAS PRESSSED!!!\n\n");
-
-    if (button.getFillColor() == sf::Color::Red)
-        button.setFillColor(sf::Color::Blue);
-    else
-        button.setFillColor(sf::Color::Red);
+    printf("CRACK STARTED!!!\n\n");
 
     return EVERYTHING_FINE;
 }

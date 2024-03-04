@@ -19,16 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Button.hpp" />
     <ClInclude Include="headers\Cracker.hpp" />
+    <ClInclude Include="headers\MySFMLFunctions.hpp" />
     <ClInclude Include="headers\Utils.hpp" />
     <ClInclude Include="headers\WindowProperties.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Cracker.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MySFMLFunctions.cpp" />
     <ClCompile Include="src\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\nerd-blackwing.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\music.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\FiraCode-Bold.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -54,7 +63,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

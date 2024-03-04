@@ -6,6 +6,6 @@
 #include "SFML/Audio.hpp"
 #include "Utils.hpp"
 
-ErrorCode Crack(sf::RectangleShape& button, const char* filePath);
+ErrorCode Crack(const char* filePath);
 
 #endif

@@ -1,15 +1,34 @@
-#include <vector>
+#include <string>
 #include "WindowProperties.hpp"
-#include "ButtonManager.hpp"
 #include "Cracker.hpp"
+#include "MySFMLFunctions.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
-    sf::RectangleShape background(sf::Vector2f((float)WINDOW_WIDTH, (float)WINDOW_HEIGHT));
 
-    const char* path = "aboba";
+    sf::Texture imageTexture;
+    MyAssertSoft(imageTexture.loadFromFile(BACKGROUND_IMAGE), ERROR_BAD_FILE);
+    Vector2fResult scaleVector = vectorDivide(sf::Vector2f(window.getSize()), sf::Vector2f(imageTexture.getSize()));
+    RETURN_ERROR(scaleVector.error);
 
+    sf::Sprite backgroundSprite(imageTexture);
+    backgroundSprite.setScale(scaleVector.value);
+
+    sf::Font mainFont;
+    MyAssertSoft(mainFont.loadFromFile(MAIN_FONT), ERROR_BAD_FILE);
+
+    sf::Text mainText(CRACK_DESCRIPTOPN, mainFont);
+    mainText.setColor(MAIN_TEXT_COLOR);
+
+    sf::SoundBuffer music;
+    MyAssertSoft(music.loadFromFile(MUSIC), ERROR_BAD_FILE);
+
+    sf::Sound musicPlayer(music);
+
+    musicPlayer.play();
+
+    bool crackFinished = false;
 
     while (window.isOpen())
     {
@@ -21,15 +40,30 @@ int main()
                 case sf::Event::Closed:
                     window.close();
                     break;
-                case sf::Event::Resized:
-                    break;
-                case sf::Event::MouseButtonPressed:
+                case sf::Event::KeyPressed:
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                    {
+                        if (crackFinished)
+                        {
+                            window.close();
+                            return 0;
+                        }
+                        RETURN_ERROR(Crack(""));
+                        crackFinished = true;
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+                    {
+                        if (musicPlayer.getStatus() != sf::Sound::Playing)
+                            musicPlayer.play();
+                        else
+                            musicPlayer.pause();
+                    }
                     break;
             }
         }
         window.clear();
-        window.draw(background);
-        window.draw(crackButton);
+        window.draw(backgroundSprite);
+        window.draw(mainText);
         window.display();
     }
 
