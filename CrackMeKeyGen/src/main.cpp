@@ -40,8 +40,15 @@ int main()
                 case sf::Event::Closed:
                     window.close();
                     break;
-                case sf::Event::KeyPressed:
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                case sf::Event::KeyPressed:                    
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+                    {
+                        if (musicPlayer.getStatus() != sf::Sound::Playing)
+                            musicPlayer.play();
+                        else
+                            musicPlayer.pause();
+                    }
+                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
                     {
                         if (crackFinished)
                         {
@@ -50,13 +57,6 @@ int main()
                         }
                         RETURN_ERROR(Crack(""));
                         crackFinished = true;
-                    }
-                    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-                    {
-                        if (musicPlayer.getStatus() != sf::Sound::Playing)
-                            musicPlayer.play();
-                        else
-                            musicPlayer.pause();
                     }
                     break;
             }
