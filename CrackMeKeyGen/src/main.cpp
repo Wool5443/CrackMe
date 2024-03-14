@@ -3,6 +3,8 @@
 #include "Cracker.hpp"
 #include "MySFMLFunctions.hpp"
 
+const char* PROGRAM_PATH = "res/LOrig.COM";
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
@@ -55,7 +57,7 @@ int main()
                             window.close();
                             return 0;
                         }
-                        RETURN_ERROR(Crack(""));
+                        RETURN_ERROR(Crack(PROGRAM_PATH));
                         crackFinished = true;
                     }
                     break;

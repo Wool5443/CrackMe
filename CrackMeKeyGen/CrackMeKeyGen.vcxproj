@@ -39,6 +39,9 @@
   <ItemGroup>
     <Font Include="res\FiraCode-Bold.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\LOrig.COM" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

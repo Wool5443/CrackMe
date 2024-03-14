@@ -56,4 +56,9 @@
       <Filter>Res</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\LOrig.COM">
+      <Filter>Res</Filter>
+    </None>
+  </ItemGroup>
 </Project>
