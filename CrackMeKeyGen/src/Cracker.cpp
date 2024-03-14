@@ -4,6 +4,8 @@
 const size_t BAD_JUMP_ADDR = 0x58;
 const char NOP = 0x90;
 
+const char* NEW_FILE = "res/LCpy.COM";
+
 ErrorCode Crack(const char* filePath)
 {
     FILE* fileRead = fopen(filePath, "rb");
@@ -20,9 +22,9 @@ ErrorCode Crack(const char* filePath)
     fileBuf[BAD_JUMP_ADDR] = NOP;
     fileBuf[BAD_JUMP_ADDR + 1] = NOP;
 
-    FILE* fileWrite = fopen(filePath, "wb");
+    FILE* fileWrite = fopen(NEW_FILE, "wb");
 
-    fwrite(fileBuf, sizeof(*fileBuf), fileSize, fileRead);
+    fwrite(fileBuf, sizeof(*fileBuf), fileSize, fileWrite);
 
     fclose(fileWrite);
 
